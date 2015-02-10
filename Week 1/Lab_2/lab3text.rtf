@@ -1,0 +1,118 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1343\cocoasubrtf140
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\fs24 \cf0 /* Question 2 */\
+\
+insert into users (userid,firstname,lastname,middleName)\
+values(11,'Chris','Manfredi','Sean');\
+\
+/* Question 3 */\
+\
+insert into orders (userid,orderdate,shippingDate)\
+values(11,'15-11-04','110515');\
+\
+insert into orders (userid,orderdate,shippingDate)\
+values(11,'15-11-04','110515');\
+\
+insert into orderItem (orderid,itemid,quantity)\
+values('21279','1','40');\
+\
+insert into orderItem (orderid,itemid,quantity)\
+values('21280','19','2');\
+\
+/* Question 4 */\
+\
+insert into userdvd (userid,dvdId)\
+Values(11,'18443');\
+\
+insert into userdvd (userid,dvdId)\
+Values(11,'18444');\
+\
+/* Question 5 */\
+\
+insert into uservehicle (userid,vehicleid)\
+Values(11,'18844');\
+\
+insert into uservehicle (userid,vehicleid)\
+Values(11,'18845');\
+\
+/* Question 6 */\
+\
+SELECT users.userid,firstname,lastname\
+FROM users\
+JOIN orders\
+ON orders.orderid = users.userid;\
+\
+\
+/* Question 7 */\
+\
+SELECT * \
+FROM users\
+JOIN orders\
+LIMIT 200;\
+\
+/* Question 8 */\
+\
+SELECT users.userid,firstname,lastname,orderid\
+FROM users\
+JOIN orders\
+ON users.userid = orders.userid\
+WHERE orderid is NULL\
+LIMIT 200;\
+\
+/* Question 9 */\
+\
+SELECT orders.orderid,orderDate,users.userid,firstname,lastname,itemname,quantity\
+FROM users\
+JOIN orders\
+ON users.userid = orders.userid\
+JOIN orderitem \
+ON orders.orderid - orderitem.orderid\
+JOIN item \
+ON orderitem.itemid = item.itemid\
+LIMIT 200;\
+\
+/* Question 10 */\
+\
+ALTER TABLE orders\
+ADD destinationState\
+VARCHAR(2);\
+\
+/* Question 11 */\
+\
+ALTER TABLE orders\
+ADD CONSTRAINT FK_orders\
+FOREIGN KEY (destinationState)\
+REFERENCES state(state);\
+\
+/* Question 12 */\
+\
+SELECT concat(firstname,'',lastname) as fullname\
+FROM users\
+WHERE lastname = 'Steady';\
+\
+/* Question 13 */\
+\
+ALTER TABLE users\
+ADD index (lastname);\
+\
+/* Question 14 */\
+\
+SELECT concat(firstname,'',lastname) as fullname\
+FROM users\
+WHERE lastname = 'Steady';\
+\
+/* Question 15 */\
+\
+SELECT count(lastname) as count from users\
+WHERE lastname like '%ing';\
+\
+/* Question 16 */\
+\
+SELECT count(occupationid) as count from users\
+WHERE firstname like 'J%' and occupationid is not NULL;\
+18487\
+}
