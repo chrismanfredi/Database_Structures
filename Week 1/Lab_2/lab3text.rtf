@@ -6,22 +6,28 @@
 
 \f0\fs24 \cf0 /* Question 2 */\
 \
-insert into users (userid,firstname,lastname,middleName)\
-values(11,'Chris','Manfredi','Sean');\
+insert into users (userId, firstname, middlename, lastname, dob, gender)\
+values ('cmanfredi11', 'Chris', 'Sean', 'Manfredi', '11/04/1994', 'M');\
 \
 /* Question 3 */\
 \
-insert into orders (userid,orderdate,shippingDate)\
-values(11,'15-11-04','110515');\
+insert into orders (userid,orderDate)\
+values('11','2011-04-15 00:00:00');\
 \
-insert into orders (userid,orderdate,shippingDate)\
-values(11,'15-11-04','110515');\
+insert into orderitem(orderId,itemid,quantity)\
+values(21279,30,1);\
+\
+insert into orderItem(orderid,itemid,quantity)\
+values(21279,20,100);\
+\
+insert into orders(userid,orderdate)\
+values('11','2011-04-15 00:00:00');\
+\
+insert into orderitem (orderid,itemid,quantity)\
+values(21280,29,2);\
 \
 insert into orderItem (orderid,itemid,quantity)\
-values('21279','1','40');\
-\
-insert into orderItem (orderid,itemid,quantity)\
-values('21280','19','2');\
+values(21280,28,2);\
 \
 /* Question 4 */\
 \
@@ -114,5 +120,4 @@ WHERE lastname like '%ing';\
 \
 SELECT count(occupationid) as count from users\
 WHERE firstname like 'J%' and occupationid is not NULL;\
-18487\
 }
